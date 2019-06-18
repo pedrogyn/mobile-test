@@ -5,7 +5,10 @@ import HomeView from "../views/HomeView";
 
 const AppNavigator = createStackNavigator({
   TableView: {
-    screen: TableView
+    screen: TableView,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
   },
   HomeView: {
     screen: HomeView
