@@ -4,6 +4,7 @@ import {
   SET_PLAYER_TIME,
   SET_GAME_FINISHED
 } from "../constants/reducersConstants/TableReducerConstants";
+import { saveGame } from "../services/games";
 
 /**
  *
@@ -72,20 +73,18 @@ export async function play(position) {
 
       let winnerGame = verifyWinnerGame(tempPlays);
 
-      if (winnerGame == "Player 1 Wins" || winnerGame == "Player 2 Wins") {
-        dispatch([
-          {
-            type: SET_GAME_FINISHED,
-            payload: true
-          },
-          {
-            type: SET_PLAYER_TIME,
-            payload: null
-          }
-        ]);
-      }
+      if (
+        winnerGame == "Player 1 Wins" ||
+        winnerGame == "Player 2 Wins" ||
+        winnerGame == "Round Draw"
+      ) {
+        try {
+          let savedGame = await saveGame(tempPlays);
+          console.log(savedGame);
+        } catch (err) {
+          console.log(err);
+        }
 
-      if (winnerGame == "Round Draw") {
         dispatch([
           {
             type: SET_GAME_FINISHED,

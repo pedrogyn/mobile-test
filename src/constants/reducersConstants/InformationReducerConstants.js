@@ -1,0 +1,1 @@
+export const SET_FINISHED_GAMES = "SET_FINISHED_GAMES";
