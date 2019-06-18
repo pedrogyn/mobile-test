@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import ScoreFooterComponent from "../components/ScoreFooterComponent";
 import TableComponent from "../components/TableComponent";
 import { RESTART_GAME, START_GAME } from "../constants/strings";
-import { startGame, restartGame } from "../actions/TableActions";
+import { startGame, restartGame, play } from "../actions/TableActions";
 
 class TableContainer extends Component {
   constructor() {
@@ -18,7 +18,7 @@ class TableContainer extends Component {
     let { TableReducer } = this.props;
     let { gameStarted } = TableReducer;
     if (gameStarted) {
-      alert(position);
+      this.props.play(position);
     }
   }
 
@@ -43,22 +43,10 @@ class TableContainer extends Component {
   }
   render() {
     let { TableReducer } = this.props;
-    let { gameStarted, playerTime } = TableReducer;
+    let { gameStarted, playerTime, plays } = TableReducer;
     return (
       <View style={{ flex: 1 }}>
-        <TableComponent
-          plays={[
-            {
-              position: 1,
-              value: "x"
-            },
-            {
-              position: 2,
-              value: "o"
-            }
-          ]}
-          onPress={this.play}
-        />
+        <TableComponent plays={plays} onPress={this.play} />
         <ScoreFooterComponent
           playerTimeText={playerTime ? `Player ${playerTime}` : ""}
           onPress={this.startGame}
@@ -75,7 +63,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   startGame,
-  restartGame
+  restartGame,
+  play
 };
 
 export default connect(

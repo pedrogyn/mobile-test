@@ -42,7 +42,61 @@ export async function restartGame() {
       {
         type: SET_PLAYER_TIME,
         payload: null
+      },
+      {
+        type: SET_PLAYS,
+        payload: []
       }
     ]);
+  };
+}
+
+function getPlayValue(playerTime) {
+  switch (playerTime) {
+    case 1:
+      return "x";
+    case 2:
+      return "o";
+  }
+}
+
+function checkPlayerTime(playerTime) {
+  switch (playerTime) {
+    case 1:
+      return 2;
+    case 2:
+      return 1;
+  }
+}
+
+export async function play(position) {
+  return async (dispatch, getState) => {
+    let state = getState();
+
+    // alert(position);
+    let { TableReducer } = state;
+    let { plays, playerTime } = TableReducer;
+
+    let index = plays.findIndex(x => x.position === position);
+
+    if (index == -1) {
+      let tempPlays = plays;
+      tempPlays.push({
+        position,
+        player: playerTime,
+        value: getPlayValue(playerTime)
+      });
+
+      dispatch([
+        {
+          type: SET_PLAYER_TIME,
+          payload: checkPlayerTime(playerTime)
+        },
+        {
+          type: SET_PLAYS,
+          payload: tempPlays
+        }
+      ]);
+    }
   };
 }
