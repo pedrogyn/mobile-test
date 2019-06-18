@@ -81,10 +81,7 @@ export async function play(position) {
       ) {
         try {
           let savedGame = await saveGame(tempPlays);
-          console.log(savedGame);
-        } catch (err) {
-          console.log(err);
-        }
+        } catch (err) {}
 
         dispatch([
           {

@@ -10,10 +10,7 @@ export async function loadGamesAction() {
       if (result) {
         games = result;
       }
-      console.log({ result, games });
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
 
     dispatch({
       type: SET_FINISHED_GAMES,

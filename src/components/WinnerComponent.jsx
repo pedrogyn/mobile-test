@@ -5,8 +5,6 @@ import { WHITE } from "../constants/colors";
 export class WinnerComponent extends Component {
   render() {
     let { gameWinner } = this.props;
-
-    console.log({ gameWinner });
     return (
       <View
         style={{
