@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import ScoreFooterComponent from "../components/ScoreFooterComponent";
 import TableComponent from "../components/TableComponent";
 import { RESTART_GAME, START_GAME } from "../constants/strings";
-import { startGame, restartGame, play } from "../actions/TableActions";
+import { startGame, play } from "../actions/TableActions";
 
 class TableContainer extends Component {
   constructor() {
@@ -34,7 +34,7 @@ class TableContainer extends Component {
             text: "Cancel",
             style: "cancel"
           },
-          { text: "Restart", onPress: () => this.props.restartGame() }
+          { text: "Restart", onPress: () => this.props.startGame() }
         ]
       );
     }
@@ -63,7 +63,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   startGame,
-  restartGame,
   play
 };
 

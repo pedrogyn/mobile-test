@@ -1,13 +1,17 @@
 import {
   SET_PLAYS,
   SET_GAME_STARTED,
-  SET_PLAYER_TIME
+  SET_PLAYER_TIME,
+  SET_GAME_FINISHED,
+  SET_GAME_WINNER
 } from "../constants/reducersConstants/TableReducerConstants";
 
 const INITIAL_STATE = {
   plays: [],
   gameStarted: false,
-  playerTime: null
+  playerTime: null,
+  gameFinished: false,
+  gameWinner: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -18,6 +22,10 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, gameStarted: action.payload };
     case SET_PLAYER_TIME:
       return { ...state, playerTime: action.payload };
+    case SET_GAME_FINISHED:
+      return { ...state, gameFinished: action.payload };
+    case SET_GAME_WINNER:
+      return { ...state, gameWinner: action.payload };
     default:
       return state;
   }
