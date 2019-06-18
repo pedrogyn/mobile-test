@@ -48,6 +48,7 @@ class TableContainer extends Component {
       <View style={{ flex: 1 }}>
         <TableComponent plays={plays} onPress={this.play} />
         <ScoreFooterComponent
+          informationOnPress={this.props.informationScreen}
           playerTimeText={playerTime ? `Player ${playerTime}` : ""}
           onPress={this.startGame}
           title={!gameStarted ? START_GAME : RESTART_GAME}
