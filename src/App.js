@@ -8,8 +8,8 @@ import multi from "redux-multi";
 import thunk from "redux-thunk";
 
 import reducers from "./reducers";
-import Home from "./views/Home";
-import TableView from "./views/TableView";
+
+import Routes from "./routes/routes";
 
 export const store = applyMiddleware(multi, thunk, promise)(createStore)(
   reducers
@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <TableView />
+        <Routes />
       </Provider>
     );
   }
