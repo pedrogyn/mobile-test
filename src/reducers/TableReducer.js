@@ -25,6 +25,7 @@ export default (state = INITIAL_STATE, action) => {
     case SET_GAME_FINISHED:
       return { ...state, gameFinished: action.payload };
     case SET_GAME_WINNER:
+      console.log(action.payload);
       return { ...state, gameWinner: action.payload };
     default:
       return state;

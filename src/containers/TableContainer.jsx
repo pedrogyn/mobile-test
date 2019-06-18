@@ -5,7 +5,12 @@ import { connect } from "react-redux";
 import ScoreFooterComponent from "../components/ScoreFooterComponent";
 import TableComponent from "../components/TableComponent";
 import { RESTART_GAME, START_GAME } from "../constants/strings";
-import { startGame, play } from "../actions/TableActions";
+import {
+  startGame,
+  play,
+  dismissWinnerComponent
+} from "../actions/TableActions";
+import { WinnerComponent } from "../components/WinnerComponent";
 
 class TableContainer extends Component {
   constructor() {
@@ -43,7 +48,7 @@ class TableContainer extends Component {
   }
   render() {
     let { TableReducer } = this.props;
-    let { gameStarted, playerTime, plays } = TableReducer;
+    let { gameStarted, playerTime, plays, gameWinner } = TableReducer;
     return (
       <View style={{ flex: 1 }}>
         <TableComponent plays={plays} onPress={this.play} />
@@ -52,6 +57,10 @@ class TableContainer extends Component {
           playerTimeText={playerTime ? `Player ${playerTime}` : ""}
           onPress={this.startGame}
           title={!gameStarted ? START_GAME : RESTART_GAME}
+        />
+        <WinnerComponent
+          dismiss={this.props.dismissWinnerComponent}
+          gameWinner={gameWinner}
         />
       </View>
     );
@@ -64,7 +73,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   startGame,
-  play
+  play,
+  dismissWinnerComponent
 };
 
 export default connect(

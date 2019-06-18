@@ -10,6 +10,7 @@ import thunk from "redux-thunk";
 import reducers from "./reducers";
 
 import Routes from "./routes/routes";
+import { WinnerComponent } from "./components/WinnerComponent";
 
 export const store = applyMiddleware(multi, thunk, promise)(createStore)(
   reducers

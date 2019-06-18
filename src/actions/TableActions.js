@@ -2,7 +2,8 @@ import {
   SET_PLAYS,
   SET_GAME_STARTED,
   SET_PLAYER_TIME,
-  SET_GAME_FINISHED
+  SET_GAME_FINISHED,
+  SET_GAME_WINNER
 } from "../constants/reducersConstants/TableReducerConstants";
 import { saveGame } from "../services/games";
 
@@ -93,6 +94,10 @@ export async function play(position) {
           {
             type: SET_PLAYER_TIME,
             payload: null
+          },
+          {
+            type: SET_GAME_WINNER,
+            payload: winnerGame
           }
         ]);
       }
@@ -157,4 +162,13 @@ function verifyWinnerGame(plays) {
   }
 
   return "Game running";
+}
+
+export async function dismissWinnerComponent() {
+  return async (dispatch, getState) => {
+    dispatch({
+      type: SET_GAME_WINNER,
+      payload: null
+    });
+  };
 }
