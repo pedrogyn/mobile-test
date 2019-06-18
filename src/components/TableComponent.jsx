@@ -4,7 +4,6 @@ import PositionComponent from "./PositionComponent";
 
 export default class TableComponent extends Component {
   getValueOfPosition(position) {
-    console.log(this.props);
     let plays = [];
 
     if (this.props.plays) {
