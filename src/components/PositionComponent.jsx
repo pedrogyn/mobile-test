@@ -7,7 +7,9 @@ export default class PositionComponent extends Component {
     return (
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={this.props.onPress}
+        onPress={() => {
+          this.props.onPress && this.props.onPress(this.props.position);
+        }}
         style={[styles.position, {}]}
       >
         <Text>{this.props.value}</Text>

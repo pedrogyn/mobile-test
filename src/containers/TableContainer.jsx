@@ -12,7 +12,17 @@ class TableContainer extends Component {
     let { gameStarted } = TableReducer;
     return (
       <View style={{ flex: 1 }}>
-        <TableComponent />
+        <TableComponent
+          plays={[
+            {
+              position: 1,
+              value: "x"
+            }
+          ]}
+          onPress={position => {
+            alert(position);
+          }}
+        />
         <ScoreFooterComponent
           // playerTimeText={}
           title={!gameStarted ? START_GAME : RESTART_GAME}
