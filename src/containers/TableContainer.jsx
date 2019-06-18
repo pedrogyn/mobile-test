@@ -17,6 +17,10 @@ class TableContainer extends Component {
             {
               position: 1,
               value: "x"
+            },
+            {
+              position: 2,
+              value: "o"
             }
           ]}
           onPress={position => {

@@ -12,7 +12,15 @@ export default class PositionComponent extends Component {
         }}
         style={[styles.position, {}]}
       >
-        <Text>{this.props.value}</Text>
+        <Text
+          style={{
+            fontSize: 50,
+            fontWeight: "bold",
+            textTransform: "uppercase"
+          }}
+        >
+          {this.props.value}
+        </Text>
       </TouchableOpacity>
     );
   }
