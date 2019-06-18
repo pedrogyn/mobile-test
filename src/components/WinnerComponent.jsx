@@ -14,7 +14,8 @@ export class WinnerComponent extends Component {
           position: "absolute",
           top: 0,
           left: 0,
-          display: this.props.gameWinner ? "flex" : "none",
+          // display: this.props.gameWinner ? "flex" : "none",
+          display: "none",
           backgroundColor: "rgba(0,0,0,0.5)"
         }}
       >

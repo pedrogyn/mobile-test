@@ -28,7 +28,7 @@ export default class PositionComponent extends Component {
 
 const styles = StyleSheet.create({
   position: {
-    height: (Dimensions.get("screen").height - 50) / 3,
+    height: (Dimensions.get("window").height - 50) / 3,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: LIGHT,

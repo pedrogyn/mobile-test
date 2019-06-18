@@ -58,10 +58,12 @@ class TableContainer extends Component {
           onPress={this.startGame}
           title={!gameStarted ? START_GAME : RESTART_GAME}
         />
-        <WinnerComponent
-          dismiss={this.props.dismissWinnerComponent}
-          gameWinner={gameWinner}
-        />
+        {gameWinner && (
+          <WinnerComponent
+            dismiss={this.props.dismissWinnerComponent}
+            gameWinner={gameWinner}
+          />
+        )}
       </View>
     );
   }
