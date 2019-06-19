@@ -21,7 +21,9 @@ export class WinnerComponent extends Component {
   render() {
     let { gameWinner } = this.props;
     return (
-      <View style={styles.container}>
+      <View
+        style={[styles.container, { display: gameWinner ? "flex" : "none" }]}
+      >
         <TouchableOpacity
           activeOpacity={1}
           onPress={this.props.dismiss}
@@ -44,7 +46,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    display: gameWinner ? "flex" : "none",
     backgroundColor: "rgba(0,0,0,0.5)"
   },
   background: {
