@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { WHITE } from "../constants/colors";
 import { loadGamesAction } from "../actions/InformationActions";
+import { FINISHED_GAMES } from "../constants/strings";
 
 class InformationContainer extends Component {
   componentDidMount() {
@@ -16,8 +17,8 @@ class InformationContainer extends Component {
     return (
       <View style={styles.container}>
         <Text style={{ color: WHITE, fontSize: 18 }}>
-          Jogos realizados:{" "}
-          <Text style={{ fontWeight: "bold" }}>{finishedGames.length}</Text>
+          {FINISHED_GAMES}
+          <Text style={{ fontWeight: "bold" }}> {finishedGames.length}</Text>
         </Text>
       </View>
     );

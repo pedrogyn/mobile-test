@@ -4,7 +4,13 @@ import { View, Text, Alert } from "react-native";
 import { connect } from "react-redux";
 import ScoreFooterComponent from "../components/ScoreFooterComponent";
 import TableComponent from "../components/TableComponent";
-import { RESTART_GAME, START_GAME } from "../constants/strings";
+import {
+  RESTART_GAME,
+  START_GAME,
+  CONFIRM_RESTART_GAME,
+  CANCEL,
+  RESTART
+} from "../constants/strings";
 import {
   startGame,
   play,
@@ -31,17 +37,13 @@ class TableContainer extends Component {
     let { TableReducer } = this.props;
     let { gameStarted } = TableReducer;
     if (gameStarted) {
-      return Alert.alert(
-        "Restart Game",
-        "Are you sure you want to restart the game?",
-        [
-          {
-            text: "Cancel",
-            style: "cancel"
-          },
-          { text: "Restart", onPress: () => this.props.startGame() }
-        ]
-      );
+      return Alert.alert(RESTART_GAME, CONFIRM_RESTART_GAME, [
+        {
+          text: CANCEL,
+          style: "cancel"
+        },
+        { text: RESTART, onPress: () => this.props.startGame() }
+      ]);
     }
 
     this.props.startGame();
